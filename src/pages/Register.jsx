@@ -35,6 +35,7 @@ const Register = () => {
               displayName,
               photoURL: downloadURL,
             });
+            
             //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
@@ -42,9 +43,10 @@ const Register = () => {
               email,
               photoURL: downloadURL,
             });
-              console.log("na create si ${displayName}")
+
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
+            alert("Registered Successfully!")
             navigate("/");
           } catch (err) {
             console.log(err);
